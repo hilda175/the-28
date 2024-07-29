@@ -1,0 +1,38 @@
+% Facts: family relationships
+male(nicole).
+male(ian).
+male(elijah).
+male(jeff).
+male(john).
+male(ben).
+male(dani).
+male(tonny).
+
+female(sarah).
+female(reina).
+female(linda).
+female(rahma).
+female(jane).
+female(zena).
+
+parent(nicole, ian).
+parent(sarah, ian).
+parent(ian, elijah).
+parent(ian, jeff).
+parent(reina, elijah).
+parent(reina, jeff).
+parent(jeff,john ).
+parent(linda, john).
+parent(jeff, ben).
+parent(rahma, ben).
+parent(jeff, dani).
+parent(jane, dani).
+parent(jeff, tonny).
+parent(jane, tonny).
+
+% Rules: family relationships
+father(X, Y) :- parent(X, Y), male(X).
+mother(X, Y) :- parent(X, Y), female(X).
+grandfather(X, Y) :- parent(X, Z), parent(Z, Y), male(X).
+grandmother(X, Y) :- parent(X, Z), parent(Z, Y), female(X).
+sibling(X, Y) :- parent(Z, X), parent(Z, Y), X \= Y.
